@@ -128,6 +128,16 @@ function updateCursorPosition(nextLetter, nextWord) {
         cursor.style.top = nextWord.getBoundingClientRect().top + 2 + 'px';
         cursor.style.left = nextWord.getBoundingClientRect().right + 'px';
     }
+
+    const gameRect = gameElement.getBoundingClientRect();
+    const nextLetterRect = nextLetter?.getBoundingClientRect();
+    const nextWordRect = nextWord?.getBoundingClientRect();
+
+    if (nextLetterRect && (nextLetterRect.bottom > gameRect.bottom || nextLetterRect.top < gameRect.top)) {
+        nextLetter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (nextWordRect && (nextWordRect.bottom > gameRect.bottom || nextWordRect.top < gameRect.top)) {
+        nextWord.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 }
 
 gameElement.addEventListener('keydown', function(e) {
@@ -159,6 +169,7 @@ gameElement.addEventListener('keydown', function(e) {
             incorrectLetter.innerHTML = key;
             incorrectLetter.className = 'letter incorrect extra';
             currentWord.appendChild(incorrectLetter);
+            addClass(incorrectLetter, 'current'); // Mark the new incorrect letter as current
         }
     }
 

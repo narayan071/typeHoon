@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>typeHoon</title>
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,8 +16,13 @@
         <div id="header">
             <div id="info">30</div>
             <div id="buttons">
-                <button onclick="newGame()">new game</button>
+                <button id='newGameButton' >new game</button>
             </div>
+        </div>
+        <div id="timer-options">
+            <button class="timer-button" data-time="30000">30s</button>
+            <button class="timer-button" data-time="60000">60s</button>
+            <button class="timer-button" data-time="120000">120s</button>
         </div>
         <div id="game" tabindex="0">
             <div id="words"></div>
@@ -24,6 +30,10 @@
             <div id="focus-error">click here to focus</div>
         </div>
     </main>
+    <footer>
+        made with speed &#128640; by <a href="https://narayan-pradhan.netlify.app/" target="_blank">narayan</a>
+    </footer>
+    
 </body>
 <script src="typing.js"></script>
 </html>
